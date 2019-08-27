@@ -11,7 +11,7 @@ $ brew install yarn --without-node
 # Node Version X.Y
 $ nodeenv /path/to/your/envs/node
 $ source /path/to/your/envs/node/bin/activate
-$ cd /path/to/waitress/repo/path
+$ cd /path/to/esice/sales/repo/path
 
 $ yarn install
 ```
