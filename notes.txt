@@ -1,0 +1,79 @@
+OBJETIVO:
+ - Proveer de un servicio web que muestre el estado de las ventas durante el transcurso del tiempo por medio de un
+   dashboard. Cada venta se representara por el ultimo estado vigente en el que se encuentra. La visualizacion
+   del dashboard será muy similar a herramientas como Jira o trello.
+
+
+Una venta tiene los siguientes estados:
+  Creacion -> Cotizacion -> Orden de trabajo -> Entrega -> Por pagar -> Cerrada
+
+
+- Una venta debe ser creada antes de agregar cotizaciones
+- Una venta puede tener solo una cotizacion vigente
+- Una cotizacion puede ser actualizada *DEFINIR PARAMETROS A ACTUALIZAR
+- Una cotizacion puede ser cancelada
+- Una venta puede ser recotizada, la nueva cotizacion se vuelve la vigente. Esto implica cancelar la cotizacion vigente.
+- Una cotizacion puede tener varias ordenes de trabajo vigentes
+- Una orden de trabajo puede ser interna o externa
+- Una orden de trabajo interna indica que la produccion será in-house
+- Una orden de trabajo externa indica que la produccion será realizada por un tercero
+- Una orden de trabajo puede ser actualizada * DEFINIR PARAMETEROS A ACTUALIZAR
+- Una orden de trabajo pertenece a una sola cotizacion
+- Una orden de trabajo puede ser cancelada
+- Un grupo de ordenes de trabajo vigentes solo pueden pertenecer a una misma cotizacion
+- Una orden de trabajo puede tener varias entregas vigentes
+- Una entrega pertenece a una sola orden de trabajo
+- Un grupo de entregas pueden pertenecer a multiples ordenes de trabajo vigentes
+- Una entrega puede ser cancelada
+- Una entrega puede ser actualizada * DEFINIR PARAMETROS A ACTUALIZAR
+
+
+
+Reglas de flujo:
+ - La cancelación de un estado da como resultado regresar a un estado previo
+    - Ejemplo: Si se cancela una orden de trabajo, la venta pasa al ultimo estado vigente de cotizacion
+ - La cancelacion de un estado requiere que todos los elementos de ese estado sean cancelados
+   - Ejemplo: Si se cancela una de tres ordenes de trabajo, no se pasa a un estado previo de cotizacion
+ - Una vez que una venta pasa al estado por pagar, no es considerada para estar en el dashboard de ventas
+ - Toda actualizacion sobre la venta o sus estados debe ser logeado. Incluyendo:
+   - Usuario que modifica
+   - Fecha de modificacion
+   - Razon de modificacion * NO SIEMPRE
+
+
+
+Propiedades de una venta:
+ - Producto
+ - Descripcion
+ - Cantidad
+ - Fecha de creacion
+ - Cliente
+ - Vendedor
+ - Status
+ - Cotizaciones *
+ - Ordenes *
+ - Entregas *
+
+Propiedades de una cotizacion:
+ - Precio
+ - Notas o consideraciones
+ - Tiempo estimado de pago
+ - Tiempo estimado de entrega
+ - Fecha de creacion
+ - Contacto o persona con quien se hizo el acuerdo
+ - Status
+
+Propiedades de una orden de trabajo:
+ - Encargado de orden (Trabajador en taller o proveedor)
+ - Tiempo estimado de trabajo
+ - Fecha de inicio de trabajo
+ - Fecha de fin de trabajo
+ - Status
+ * Aqui se podrian agregar detalles como: maquinaria o recursos utilizados
+
+Propiedades de una entrega:
+ - Encargado de entrega (Trabajador que entrega)
+ - Fecha estimada de entrega
+ - Fecha de entrega
+ - Contacto que recibe
+ - Status
