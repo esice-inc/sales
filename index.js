@@ -8,4 +8,4 @@ const db = databaseFactory.create(config.database);
 const app = api(db);
 
 app.listen(config.api.port)
-console.log("Marketplace listening on ", config.api.port);
+console.log("EsiceSales listening on ", config.api.port);
