@@ -11,6 +11,7 @@ const schema = new mongoose.Schema({
   contactId: mongoose.ObjectId,
   companyId: mongoose.ObjectId,
   sellerId: mongoose.ObjectId,
+  organizationId: mongoose.ObjectId,
 });
 
 module.exports = mongoose.model('Sale', schema);
