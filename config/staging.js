@@ -1,7 +1,11 @@
 module.exports = {
   database: {
-    driver: 'sql',
-    database: 'db_staging',
+    driver: 'mongoose',
+    schema: 'mongodb',
+    database: "esice_sales_staging",
+    host: "localhost",
+    port: 27017,
+    options: {},
   },
 };
 
